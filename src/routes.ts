@@ -45,5 +45,5 @@ routes.post("/appointment/create", createAppointmentController.handle);
 routes.get("/appointments", findManyAppointmentController.handle);
 routes.get("/appointment/:id", findAppointmentController.handle);
 routes.put("/appointment/update/:id", updateAppointmentController.handle);
-routes.put("/appointment/cancel/:id", cancelAppointmentController.handle);
+routes.patch("/appointment/cancel/:id", cancelAppointmentController.handle);
 export default routes;
