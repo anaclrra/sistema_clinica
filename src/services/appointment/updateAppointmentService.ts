@@ -4,12 +4,26 @@ const client = new PrismaClient();
 
 export default {
   async execute(
+    id: string,
     dateTime: Date,
     status: Status,
     patientId: string,
     doctorId: string
   ): Promise<Appointment> {
     try {
+      if (typeof id !== "string") {
+        throw Object.assign(new Error("ID de consulta invalida"), {
+          status: 404,
+        });
+      }
+      const appointment = await client.appointment.findFirst({
+        where: { id },
+      });
+      if (!appointment) {
+        throw Object.assign(new Error("Falha ao buscar consulta!"), {
+          status: 404,
+        });
+      }
       const dateTimeConvert = new Date(dateTime);
 
       // Define o intervalo mínimo entre consultas
@@ -44,7 +58,8 @@ export default {
         );
       }
 
-      const appointment = await client.appointment.create({
+      const response = await client.appointment.update({
+        where: { id },
         data: {
           dateTime,
           status,
@@ -53,7 +68,7 @@ export default {
         },
       });
 
-      return appointment;
+      return response;
     } catch (error: any) {
       error.path = "/services/appointment/createAppointmentService";
       throw error;

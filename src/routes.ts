@@ -16,11 +16,14 @@ import findDoctorController from "./controllers/doctor/findDoctorController";
 
 // Especialidades
 import findManySpecialtiesController from "./controllers/specialties/findManySpecialtiesController";
+import findDoctorsBySpecialtiesController from "./controllers/specialties/findDoctorsBySpecialtiesController";
 
 // Consultas
 import createAppointmentController from "./controllers/appointment/createAppointmentController";
 import findManyAppointmentController from "./controllers/appointment/findManyAppointmentController";
 import findAppointmentController from "./controllers/appointment/findAppointmentController";
+import cancelAppointmentController from "./controllers/appointment/cancelAppointmentController";
+import updateAppointmentController from "./controllers/appointment/updateAppointmentController";
 // Paciente
 routes.post("/patient/create", createPatientController.handle);
 routes.get("/patients", findManyPatientsController.handle);
@@ -35,9 +38,12 @@ routes.put("/doctor/update/:id", updateDoctorController.handle);
 
 // Especialidades
 routes.get("/specialties", findManySpecialtiesController.handle);
+routes.get("/specialtie/:id", findDoctorsBySpecialtiesController.handle);
 
 // Consultas
 routes.post("/appointment/create", createAppointmentController.handle);
 routes.get("/appointments", findManyAppointmentController.handle);
 routes.get("/appointment/:id", findAppointmentController.handle);
+routes.put("/appointment/update/:id", updateAppointmentController.handle);
+routes.put("/appointment/cancel/:id", cancelAppointmentController.handle);
 export default routes;
