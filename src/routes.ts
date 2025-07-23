@@ -24,26 +24,35 @@ import findManyAppointmentController from "./controllers/appointment/findManyApp
 import findAppointmentController from "./controllers/appointment/findAppointmentController";
 import cancelAppointmentController from "./controllers/appointment/cancelAppointmentController";
 import updateAppointmentController from "./controllers/appointment/updateAppointmentController";
+import findAppointmentsPatientController from "./controllers/appointment/findAppointmentsPatientController";
+import findAppointmentsDoctorController from "./controllers/appointment/findAppointmentsDoctorController";
+
 // Paciente
 routes.post("/patient/create", createPatientController.handle);
 routes.get("/patients", findManyPatientsController.handle);
-routes.get("/patient/:id", findPatientController.handle);
 routes.put("/patient/update/:id", updatePatientController.handle);
+routes.get("/patient/:id", findPatientController.handle);
 
 // Medico
 routes.post("/doctor/create", createDoctorController.handle);
 routes.get("/doctors", findManyDoctorsController.handle);
-routes.get("/doctor/:id", findDoctorController.handle);
 routes.put("/doctor/update/:id", updateDoctorController.handle);
+routes.get("/doctor/:id", findDoctorController.handle);
 
 // Especialidades
 routes.get("/specialties", findManySpecialtiesController.handle);
 routes.get("/specialtie/:id", findDoctorsBySpecialtiesController.handle);
 
 // Consultas
-routes.post("/appointment/create", createAppointmentController.handle);
+routes.get(
+  "/appointments/patient/:id",
+  findAppointmentsPatientController.handle
+);
+routes.get("/appointments/doctor/:id", findAppointmentsDoctorController.handle);
+
 routes.get("/appointments", findManyAppointmentController.handle);
 routes.get("/appointment/:id", findAppointmentController.handle);
+routes.post("/appointment/create", createAppointmentController.handle);
 routes.put("/appointment/update/:id", updateAppointmentController.handle);
 routes.patch("/appointment/cancel/:id", cancelAppointmentController.handle);
 export default routes;
