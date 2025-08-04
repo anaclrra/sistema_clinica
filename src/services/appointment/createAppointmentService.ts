@@ -5,7 +5,6 @@ const client = new PrismaClient();
 export default {
   async execute(
     dateTime: Date,
-    status: Status,
     patientId: string,
     doctorId: string
   ): Promise<Appointment> {
@@ -47,7 +46,7 @@ export default {
       const appointment = await client.appointment.create({
         data: {
           dateTime,
-          status,
+          status: "AGENDADA",
           patientId,
           doctorId,
         },

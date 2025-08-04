@@ -10,7 +10,6 @@ const handle: RequestHandler = async (
     const { dateTime, status, patientId, doctorId } = req.body;
     const response = await createAppointmentController.execute(
       dateTime,
-      status,
       patientId,
       doctorId
     );

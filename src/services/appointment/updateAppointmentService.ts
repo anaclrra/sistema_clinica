@@ -44,6 +44,9 @@ export default {
             gte: startInterval,
             lte: endInterval,
           },
+          NOT: {
+            id,
+          },
         },
       });
 
