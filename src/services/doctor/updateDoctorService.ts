@@ -31,6 +31,13 @@ export default {
           crm,
           specialtiesId,
         },
+        select: {
+          id: true,
+          name: true,
+          crm: true,
+          specialties: true,
+          specialtiesId: true,
+        },
       });
 
       return response;

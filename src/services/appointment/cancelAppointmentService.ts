@@ -24,6 +24,15 @@ export default {
         data: {
           status: "CANCELADA",
         },
+        select: {
+          id: true,
+          status: true,
+          dateTime: true,
+          patient: true,
+          patientId: true,
+          doctor: true,
+          doctorId: true,
+        },
       });
 
       return response;

@@ -50,6 +50,15 @@ export default {
           patientId,
           doctorId,
         },
+        select: {
+          id: true,
+          patientId: true,
+          doctorId: true,
+          dateTime: true,
+          status: true,
+          doctor: true,
+          patient: true,
+        },
       });
 
       return appointment;
