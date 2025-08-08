@@ -16,7 +16,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Methods",
-    "GET,HEAD,OPTIONS,POST,PUT,DELETE"
+    "GET,HEAD,OPTIONS,POST,PUT,DELETE,PATCH"
   );
   res.header(
     "Access-Control-Allow-Headers",
